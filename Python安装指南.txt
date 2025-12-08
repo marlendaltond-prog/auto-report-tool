@@ -1,0 +1,18 @@
+Python安装指南
+
+1. 访问Python官方网站：https://www.python.org/
+2. 点击"Downloads"，选择最新的Python 3.7或更高版本
+3. 运行下载的安装程序
+4. **重要：在安装界面勾选"Add Python to PATH"选项**
+5. 点击"Install Now"完成安装
+
+安装完成后，您可以在命令提示符中运行以下命令验证安装：
+python --version
+
+如果您已经安装了Python但没有添加到PATH，可以修改批处理文件手动指定Python路径：
+1. 找到您的Python安装路径（通常在C:\Program Files\PythonXX或C:\Users\用户名\AppData\Local\Programs\Python）
+2. 打开"启动报表工具.bat"文件
+3. 在第14行左右找到"python --version"等命令
+4. 将"python"替换为完整的Python路径，例如："C:\Program Files\Python38\python.exe"
+
+如果您需要帮助，请联系系统管理员。

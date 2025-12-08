@@ -1,0 +1,134 @@
+{
+  "email_profiles": [
+    {
+      "id": "work_email",
+      "name": "工作邮箱",
+      "description": "公司工作邮箱配置",
+      "smtp": {
+        "host": "smtp.example.com",
+        "port": 587,
+        "tls": true,
+        "ssl": false,
+        "timeout": 30,
+        "retry_count": 3,
+        "retry_delay": 5
+      },
+      "auth": {
+        "username": "report@example.com",
+        "password": "secure_password_here",
+        "use_oauth2": false
+      },
+      "sender": {
+        "name": "报表系统",
+        "email": "report@example.com"
+      },
+      "options": {
+        "enable_html_body": true,
+        "max_attachment_size": "10MB",
+        "allow_large_attachments": true,
+        "large_attachment_action": "notify"
+      },
+      "active": true
+    },
+    {
+      "id": "business_email",
+      "name": "商务邮箱",
+      "description": "商务沟通专用邮箱配置",
+      "smtp": {
+        "host": "smtp.business.example.com",
+        "port": 465,
+        "tls": false,
+        "ssl": true,
+        "timeout": 60,
+        "retry_count": 5,
+        "retry_delay": 10
+      },
+      "auth": {
+        "username": "business_report@example.com",
+        "password": "business_secure_password",
+        "use_oauth2": false
+      },
+      "sender": {
+        "name": "商务分析部",
+        "email": "business_report@example.com"
+      },
+      "options": {
+        "enable_html_body": true,
+        "max_attachment_size": "20MB",
+        "allow_large_attachments": true,
+        "large_attachment_action": "compress"
+      },
+      "active": true
+    },
+    {
+      "id": "personal_email",
+      "name": "个人邮箱",
+      "description": "个人使用的邮箱配置",
+      "smtp": {
+        "host": "smtp.gmail.com",
+        "port": 587,
+        "tls": true,
+        "ssl": false,
+        "timeout": 30,
+        "retry_count": 2,
+        "retry_delay": 3
+      },
+      "auth": {
+        "username": "personal.user@gmail.com",
+        "password": "gmail_app_password",
+        "use_oauth2": false
+      },
+      "sender": {
+        "name": "个人报表",
+        "email": "personal.user@gmail.com"
+      },
+      "options": {
+        "enable_html_body": true,
+        "max_attachment_size": "5MB",
+        "allow_large_attachments": false,
+        "large_attachment_action": "reject"
+      },
+      "active": false
+    },
+    {
+      "id": "internal_mail",
+      "name": "内部邮件",
+      "description": "公司内部邮件系统配置",
+      "smtp": {
+        "host": "mail.internal.example.com",
+        "port": 25,
+        "tls": false,
+        "ssl": false,
+        "timeout": 15,
+        "retry_count": 1,
+        "retry_delay": 2
+      },
+      "auth": {
+        "username": "",
+        "password": "",
+        "use_oauth2": false,
+        "anonymous": true
+      },
+      "sender": {
+        "name": "内部报表系统",
+        "email": "report@internal.example.com"
+      },
+      "options": {
+        "enable_html_body": false,
+        "max_attachment_size": "50MB",
+        "allow_large_attachments": true,
+        "large_attachment_action": "send"
+      },
+      "active": true
+    }
+  ],
+  "default_profile": "work_email",
+  "global_settings": {
+    "enable_notifications": true,
+    "max_recipients_per_email": 50,
+    "enable_bcc": false,
+    "default_bcc": "backup@example.com",
+    "log_emails": true,
+    "email_log_dir": "logs/emails"
+  }
+}

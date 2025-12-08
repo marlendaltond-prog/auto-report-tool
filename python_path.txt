@@ -1,0 +1,76 @@
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+Ctrl click to launch VS Code Native REPL
+>>> 
+KeyboardInterrupt
+>>> Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    clear
+NameError: name 'clear' is not defined
+>>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>>   File "<stdin>", line 1
+    if ($env:TERM_PROGRAM -eq "vscode") { $Global:__TraeInjectAgain=1; try { . "d:\Trae CN\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch{} }; Write-Output "[Trae CN] Shell integration is not enabled, try to fix it now."
+        ^
+SyntaxError: invalid syntax
+>>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>> >>> 
+KeyboardInterrupt
+>>> Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    clear
+NameError: name 'clear' is not defined
+>>>   File "<stdin>", line 1
+    try { . "d:\Trae CN\resources\app\out\vs\workbench\contrib\terminal\common\scripts\safe_rm_aliases.ps1" } catch{} ; Write-Output "[Trae CN] Safe Rm alias is not enabled, try to fix it now."
+        ^
+SyntaxError: expected ':'
+>>>   File "<stdin>", line 1
+    c:\Users\25331\Desktop\新建文件夹\启动报表工具.bat
+       ^
+SyntaxError: unexpected character after line continuation character
+>>> 
+KeyboardInterrupt
+>>> Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    clear
+NameError: name 'clear' is not defined
+>>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>>   File "<stdin>", line 1
+    if ($env:TERM_PROGRAM -eq "vscode") { $Global:__TraeInjectAgain=1; try { . "d:\Trae CN\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch{} }; Write-Output "[Trae CN] Shell integration is not enabled, try to fix it now."
+        ^
+SyntaxError: invalid syntax
+>>> 
+KeyboardInterrupt
+>>> >>> 
+KeyboardInterrupt
+>>> >>> >>> 
+KeyboardInterrupt
+>>> Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    clear
+NameError: name 'clear' is not defined
+>>>   File "<stdin>", line 1
+    try { . "d:\Trae CN\resources\app\out\vs\workbench\contrib\terminal\common\scripts\safe_rm_aliases.ps1" } catch{} ; Write-Output "[Trae CN] Safe Rm alias is not enabled, try to fix it now."
+        ^
+SyntaxError: expected ':'
+>>>   File "<stdin>", line 1
+    c:\Users\25331\Desktop\新建文件夹\start_simple.bat
+       ^
+SyntaxError: unexpected character after line continuation character
+>>> ^C
