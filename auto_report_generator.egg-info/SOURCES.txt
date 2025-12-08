@@ -1,0 +1,10 @@
+README.md
+auto_report.py
+setup.py
+update_manager.py
+auto_report_generator.egg-info/PKG-INFO
+auto_report_generator.egg-info/SOURCES.txt
+auto_report_generator.egg-info/dependency_links.txt
+auto_report_generator.egg-info/entry_points.txt
+auto_report_generator.egg-info/requires.txt
+auto_report_generator.egg-info/top_level.txt

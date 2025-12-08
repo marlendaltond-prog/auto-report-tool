@@ -1,0 +1,2 @@
+[console_scripts]
+auto-report = auto_report:main

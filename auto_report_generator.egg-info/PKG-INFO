@@ -1,0 +1,186 @@
+Metadata-Version: 2.4
+Name: auto-report-generator
+Version: 1.0.0
+Summary: 自动化报表生成工具
+Home-page: https://github.com/yourusername/auto-report-generator
+Author: Your Name
+Author-email: your.email@example.com
+Project-URL: Documentation, https://github.com/yourusername/auto-report-generator/wiki
+Project-URL: Source, https://github.com/yourusername/auto-report-generator
+Project-URL: Tracker, https://github.com/yourusername/auto-report-generator/issues
+Keywords: report,excel,automation,data-analysis,business-intelligence
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Business Owners
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Office/Business :: Financial :: Spreadsheet
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: numpy>=1.20.0
+Requires-Dist: openpyxl>=3.0.0
+Requires-Dist: matplotlib>=3.0.0
+Requires-Dist: seaborn>=0.10.0
+Requires-Dist: sqlalchemy>=2.0.0
+Requires-Dist: requests>=2.0.0
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: python-crontab>=2.0.0
+Requires-Dist: PyYAML>=6.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# 自动化报表工具 - AutoReport Pro
+
+## 项目简介
+
+AutoReport Pro 是一款功能强大的自动化报表生成工具，支持多种数据源、多种输出格式和灵活的数据处理能力。
+
+## 核心功能
+
+- 📊 支持多种数据源：Excel、CSV、SQL数据库、API
+- 📄 支持多种输出格式：Excel、PDF、HTML、邮件
+- 🔧 可配置的数据处理：过滤、计算、图表生成
+- 🎨 可配置的报表样式和模板
+- ⏰ 支持定时执行和邮件发送
+- 📧 支持报表自动发送到指定邮箱
+- 🖥️ 提供GUI界面和命令行两种操作方式
+
+## 整合说明
+
+### 项目结构
+
+```
+新建文件夹/
+├── auto_report.py           # 主程序入口
+├── report_gui.py            # GUI界面实现
+├── run_gui.py               # GUI启动脚本
+├── requirements.txt         # 依赖包列表
+├── config.yaml              # 默认配置文件
+├── integrate_reports.py     # 整合管理脚本
+├── convert_md_to_docx.py    # Markdown转Word脚本
+├── create_simple_docx.py    # 创建简化Word文档脚本
+├── create_usage_docx.py     # 创建使用说明Word文档脚本
+├── create_usage_word.ps1    # PowerShell创建使用说明脚本
+├── 自动化报表工具使用说明书(优化版).md  # 使用说明书(Markdown版)
+├── 自动化报表工具使用说明书.docx      # 使用说明书(Word版)
+├── reports/                 # 报表输出目录
+└── .venv/                   # Python虚拟环境
+```
+
+### 核心文件说明
+
+1. **auto_report.py** - 主程序入口，提供命令行和配置文件两种使用方式
+2. **report_gui.py** - 完整的GUI界面实现，支持所有功能配置
+3. **run_gui.py** - 简化的GUI启动脚本，跳过登录直接进入主界面
+4. **requirements.txt** - 项目依赖包列表，包含所有必要的第三方库
+5. **config.yaml** - 默认配置文件，包含数据源、输出、图表等所有配置项
+6. **integrate_reports.py** - 项目整合管理脚本，用于检查文件、安装依赖、运行示例等
+
+### 快速开始
+
+#### 方式一：使用整合管理脚本
+
+```bash
+python integrate_reports.py
+```
+
+整合脚本提供了一个交互式菜单，支持：
+- 运行命令行示例
+- 启动GUI界面
+- 生成配置文件
+- 转换文档格式
+
+#### 方式二：直接使用命令行
+
+```bash
+# 基本使用
+python auto_report.py --data "数据源路径" --output reports --format excel,pdf
+
+# 使用配置文件
+python auto_report.py --config report_config.json
+
+# 查看帮助
+python auto_report.py --help
+```
+
+#### 方式三：使用GUI界面
+
+```bash
+python run_gui.py
+```
+
+## 依赖安装
+
+### 使用requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
+
+### 手动安装
+
+```bash
+pip install pandas numpy openpyxl sqlalchemy jinja2 reportlab requests pillow pyyaml
+```
+
+## 配置文件示例
+
+完整的`config.yaml`配置文件已包含在项目中，主要配置项包括：
+
+- 数据源配置：类型、路径、参数
+- 报表配置：名称、标题、描述
+- 输出配置：目录、格式、样式
+- 图表配置：类型、尺寸、DPI
+- 计算配置：指标、分组、过滤
+- 定时任务配置：启用、间隔、时间
+- 邮件配置：服务器、端口、账号
+
+## 使用场景
+
+1. **日常报表生成**：定期从数据库或Excel生成业务报表
+2. **数据分析报告**：对调查数据进行统计分析并生成可视化报告
+3. **自动化邮件发送**：定时将报表发送给相关人员
+4. **数据监控**：实时监控数据变化并生成告警报表
+
+## 技术栈
+
+- Python 3.7+
+- pandas：数据处理
+- numpy：数值计算
+- openpyxl：Excel文件处理
+- sqlalchemy：数据库连接
+- jinja2：模板渲染
+- reportlab：PDF生成
+- requests：API请求
+- tkinter：GUI界面
+
+## 整合状态
+
+✅ 所有核心文件已存在
+✅ 所有依赖包已安装
+✅ 配置文件已创建
+✅ 文档已生成
+✅ 整合脚本已实现
+
+项目已完全整合，可以直接使用。
