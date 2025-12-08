@@ -1,0 +1,138 @@
+{
+  "schedules": [
+    {
+      "id": "daily_sales_report",
+      "name": "每日销售报表",
+      "description": "每天生成销售数据日报表",
+      "frequency": "daily",
+      "time": "08:30",
+      "timezone": "Asia/Shanghai",
+      "report_templates": ["simple_report"],
+      "data_sources": ["sales_excel"],
+      "output": {
+        "format": "html",
+        "dir": "reports/daily",
+        "filename_pattern": "每日销售报表_{yyyyMMdd}.html"
+      },
+      "email_notification": {
+        "enabled": true,
+        "profile_id": "work_email",
+        "recipients": ["sales@example.com", "manager@example.com"],
+        "subject": "【每日报表】销售数据日报 - {yyyyMMdd}",
+        "body": "您好，今日销售数据报表已生成，请查收附件。\n\n报表生成时间：{generated_time}\n报表类型：每日销售报表"
+      },
+      "active": true,
+      "last_executed": "2024-12-03T08:30:15",
+      "next_execution": "2024-12-05T08:30:00",
+      "executed_count": 125
+    },
+    {
+      "id": "weekly_business_report",
+      "name": "每周商务报表",
+      "description": "每周生成商务分析报表",
+      "frequency": "weekly",
+      "day_of_week": 1,  # 周一
+      "time": "10:00",
+      "timezone": "Asia/Shanghai",
+      "report_templates": ["business_report"],
+      "data_sources": ["sales_excel", "order_sql"],
+      "output": {
+        "format": "html",
+        "dir": "reports/weekly",
+        "filename_pattern": "每周商务报表_{yyyyMMdd}.html"
+      },
+      "email_notification": {
+        "enabled": true,
+        "profile_id": "business_email",
+        "recipients": ["ceo@example.com", "director@example.com"],
+        "cc": ["team@example.com"],
+        "subject": "【每周报表】商务分析报告 - {yyyyMMdd}",
+        "body": "您好，本周商务分析报表已生成，请查收附件。\n\n报表生成时间：{generated_time}\n报表类型：每周商务报表"
+      },
+      "active": true,
+      "last_executed": "2024-12-02T10:00:22",
+      "next_execution": "2024-12-09T10:00:00",
+      "executed_count": 48
+    },
+    {
+      "id": "monthly_survey_report",
+      "name": "月度调研报表",
+      "description": "每月生成调研数据分析报表",
+      "frequency": "monthly",
+      "day_of_month": 1,  # 每月1日
+      "time": "09:00",
+      "timezone": "Asia/Shanghai",
+      "report_templates": ["detailed_report", "excel_sales_report"],
+      "data_sources": ["survey_data", "sales_excel"],
+      "output": {
+        "format": ["html", "excel"],
+        "dir": "reports/monthly",
+        "filename_pattern": {
+          "html": "月度调研报表_{yyyyMM}.html",
+          "excel": "月度调研数据_{yyyyMM}.xlsx"
+        }
+      },
+      "email_notification": {
+        "enabled": true,
+        "profile_id": "work_email",
+        "recipients": ["research@example.com"],
+        "subject": "【月度报表】调研数据分析报告 - {yyyyMM}",
+        "body": "您好，本月调研数据分析报表已生成，请查收附件。\n\n报表生成时间：{generated_time}\n报表类型：月度调研报表"
+      },
+      "active": true,
+      "last_executed": "2024-12-01T09:00:18",
+      "next_execution": "2025-01-01T09:00:00",
+      "executed_count": 11
+    },
+    {
+      "id": "hourly_status_report",
+      "name": "每小时状态报告",
+      "description": "每小时生成系统状态报告",
+      "frequency": "hourly",
+      "minute": 0,  # 整点执行
+      "timezone": "Asia/Shanghai",
+      "report_templates": ["simple_report"],
+      "data_sources": ["weather_api"],
+      "output": {
+        "format": "html",
+        "dir": "reports/hourly",
+        "filename_pattern": "系统状态报告_{yyyyMMdd_HHmm}.html"
+      },
+      "email_notification": {
+        "enabled": false
+      },
+      "active": false,
+      "last_executed": "2024-11-30T15:00:05",
+      "next_execution": "2024-12-05T13:00:00",
+      "executed_count": 36
+    },
+    {
+      "id": "custom_survey_analysis",
+      "name": "自定义调研分析",
+      "description": "基于新能源汽车调研数据的自定义分析报表",
+      "frequency": "custom",
+      "cron_expression": "0 14 * * 5",  # 每周五14:00执行
+      "timezone": "Asia/Shanghai",
+      "report_templates": ["detailed_report"],
+      "data_sources": ["survey_data"],
+      "output": {
+        "format": "html",
+        "dir": "reports/custom",
+        "filename_pattern": "新能源汽车调研分析_{yyyyMMdd}.html"
+      },
+      "email_notification": {
+        "enabled": true,
+        "profile_id": "personal_email",
+        "recipients": ["researcher@example.com"],
+        "subject": "【调研分析】新能源汽车购买意向调研 - {yyyyMMdd}",
+        "body": "您好，新能源汽车购买意向调研分析报表已生成，请查收附件。\n\n报表生成时间：{generated_time}\n报表类型：自定义调研分析"
+      },
+      "active": true,
+      "last_executed": "2024-12-02T14:00:12",
+      "next_execution": "2024-12-06T14:00:00",
+      "executed_count": 8
+    }
+  ],
+  "default_timezone": "Asia/Shanghai",
+  "enabled": true
+}
