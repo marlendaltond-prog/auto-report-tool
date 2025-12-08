@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>自动化报表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4F81BD;
+            text-align: center;
+        }
+        h2 {
+            color: #4F81BD;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4F81BD;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .summary {
+            width: 50%;
+        }
+        .generated-time {
+            text-align: right;
+            font-style: italic;
+            color: #666;
+        }
+        .data-table-container {
+            overflow-x: auto;
+        }
+        .large-data-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .chart-container {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }</style>
+</head>
+<body>
+    <h1>自动化报表</h1>
+    <p class="generated-time">生成时间: 2025-12-04 23:27:15</p>
+    
+    <h2>数据摘要</h2>
+    <table class="summary">
+        <tr>
+            <th>项目</th>
+            <th>值</th>
+        </tr>
+        <tr>
+            <td>总记录数</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>总列数</td>
+            <td>11</td>
+        </tr>
+    </table>
+    <h2>图表分析</h2>
+    <div class="chart-container">
+        <h3>销售趋势对比</h3>
+        <p>图表类型: line</p>
+        <p>数据范围: 未指定</p>
+    </div>
+    <h2>数据内容</h2>
+    <div class="data-table-container">
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>日期</th>
+      <th>金额</th>
+      <th>类别_1</th>
+      <th>地区</th>
+      <th>数量</th>
+      <th>类别_2</th>
+      <th>成本</th>
+      <th>部门</th>
+      <th>customer_id</th>
+      <th>customer_name</th>
+      <th>region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2023-01-01</td>
+      <td>8270</td>
+      <td>家居</td>
+      <td>深圳</td>
+      <td>17</td>
+      <td>A</td>
+      <td>1500</td>
+      <td>销售部</td>
+      <td>1.0</td>
+      <td>张三</td>
+      <td>华东</td>
+    </tr>
+    <tr>
+      <td>2023-01-02</td>
+      <td>1860</td>
+      <td>家居</td>
+      <td>杭州</td>
+      <td>8</td>
+      <td>B</td>
+      <td>2000</td>
+      <td>市场部</td>
+      <td>2.0</td>
+      <td>李四</td>
+      <td>华南</td>
+    </tr>
+    <tr>
+      <td>2023-01-03</td>
+      <td>6390</td>
+      <td>电子产品</td>
+      <td>上海</td>
+      <td>3</td>
+      <td>A</td>
+      <td>1200</td>
+      <td>销售部</td>
+      <td>3.0</td>
+      <td>王五</td>
+      <td>华北</td>
+    </tr>
+    <tr>
+      <td>2023-01-04</td>
+      <td>6191</td>
+      <td>食品</td>
+      <td>上海</td>
+      <td>3</td>
+      <td>C</td>
+      <td>3000</td>
+      <td>研发部</td>
+      <td>4.0</td>
+      <td>赵六</td>
+      <td>华东</td>
+    </tr>
+    <tr>
+      <td>2023-01-05</td>
+      <td>6734</td>
+      <td>图书</td>
+      <td>深圳</td>
+      <td>1</td>
+      <td>B</td>
+      <td>1800</td>
+      <td>市场部</td>
+      <td>5.0</td>
+      <td>钱七</td>
+      <td>西南</td>
+    </tr>
+    <tr>
+      <td>2023-01-06</td>
+      <td>7265</td>
+      <td>食品</td>
+      <td>上海</td>
+      <td>5</td>
+      <td>A</td>
+      <td>1600</td>
+      <td>销售部</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2023-01-07</td>
+      <td>1466</td>
+      <td>图书</td>
+      <td>上海</td>
+      <td>10</td>
+      <td>C</td>
+      <td>2800</td>
+      <td>研发部</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2023-01-08</td>
+      <td>5426</td>
+      <td>电子产品</td>
+      <td>深圳</td>
+      <td>7</td>
+      <td>B</td>
+      <td>1900</td>
+      <td>市场部</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2023-01-09</td>
+      <td>6578</td>
+      <td>服装</td>
+      <td>深圳</td>
+      <td>9</td>
+      <td>A</td>
+      <td>1400</td>
+      <td>销售部</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2023-01-10</td>
+      <td>9322</td>
+      <td>家居</td>
+      <td>北京</td>
+      <td>7</td>
+      <td>C</td>
+      <td>3100</td>
+      <td>研发部</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</body>
+</html>
