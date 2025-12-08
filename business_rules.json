@@ -1,0 +1,303 @@
+{
+  "business_rules": [
+    {
+      "id": "validate_sales_data",
+      "name": "销售数据验证规则",
+      "description": "验证销售数据的完整性和有效性",
+      "category": "validation",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "销售额",
+          "operator": "greater_than",
+          "value": 0,
+          "error_message": "销售额必须大于0"
+        },
+        {
+          "field": "销售数量",
+          "operator": "greater_than_or_equal",
+          "value": 1,
+          "error_message": "销售数量必须大于等于1"
+        },
+        {
+          "field": "销售日期",
+          "operator": "not_empty",
+          "error_message": "销售日期不能为空"
+        },
+        {
+          "field": "产品类别",
+          "operator": "in_list",
+          "value": ["电子产品", "服装", "食品", "家居用品", "办公用品"],
+          "error_message": "产品类别无效"
+        }
+      ],
+      "actions": [
+        {
+          "type": "log_error",
+          "level": "warning"
+        },
+        {
+          "type": "flag_record",
+          "flag": "invalid_sales_data"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "calculate_profit_margin",
+      "name": "利润率计算规则",
+      "description": "计算产品的利润率指标",
+      "category": "calculation",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "成本价",
+          "operator": "greater_than",
+          "value": 0,
+          "error_message": "成本价必须大于0"
+        },
+        {
+          "field": "销售价",
+          "operator": "greater_than",
+          "value": "成本价",
+          "error_message": "销售价必须大于成本价"
+        }
+      ],
+      "actions": [
+        {
+          "type": "new_field",
+          "name": "利润率",
+          "formula": "(销售价 - 成本价) / 销售价 * 100",
+          "format": "{:.2f}%"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "high_sales_filter",
+      "name": "高销售额过滤规则",
+      "description": "筛选出高销售额的记录",
+      "category": "filtering",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "销售额",
+          "operator": "greater_than",
+          "value": 10000,
+          "error_message": "销售额未达到高销售标准"
+        },
+        {
+          "field": "销售地区",
+          "operator": "not_in_list",
+          "value": ["待分配"],
+          "error_message": "销售地区无效"
+        }
+      ],
+      "actions": [
+        {
+          "type": "tag_record",
+          "tag": "high_value_sale"
+        },
+        {
+          "type": "include_in_report",
+          "report_section": "重点销售记录"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "sales_threshold_alert",
+      "name": "销售额阈值告警规则",
+      "description": "当销售额低于阈值时触发告警",
+      "category": "alerting",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "销售额",
+          "operator": "less_than",
+          "value": 5000,
+          "aggregation": "daily",
+          "group_by": "产品类别",
+          "error_message": "{产品类别}日销售额低于警戒值"
+        }
+      ],
+      "actions": [
+        {
+          "type": "send_email",
+          "profile_id": "work_email",
+          "recipients": ["sales_manager@example.com"],
+          "subject": "【告警】{产品类别}销售额低于阈值",
+          "body": "警告：{产品类别}今日销售额为{销售额}元，低于警戒值5000元。请及时关注！"
+        },
+        {
+          "type": "log_alert",
+          "level": "critical"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "customer_segmentation",
+      "name": "客户细分规则",
+      "description": "根据消费金额对客户进行细分",
+      "category": "segmentation",
+      "priority": 2,
+      "conditions": [
+        {
+          "field": "累计消费金额",
+          "operator": "greater_than_or_equal",
+          "value": 100000,
+          "aggregation": "lifetime",
+          "group_by": "客户ID",
+          "error_message": "不满足VIP客户条件"
+        }
+      ],
+      "actions": [
+        {
+          "type": "update_field",
+          "field": "客户等级",
+          "value": "VIP"
+        },
+        {
+          "type": "include_in_report",
+          "report_section": "VIP客户分析"
+        }
+      ],
+      "else_actions": [
+        {
+          "type": "update_field",
+          "field": "客户等级",
+          "value": "普通"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "data_cleaning_rules",
+      "name": "数据清洗规则",
+      "description": "清洗和标准化数据格式",
+      "category": "transformation",
+      "priority": 4,
+      "conditions": [
+        {
+          "field": "客户姓名",
+          "operator": "not_empty",
+          "error_message": "客户姓名不能为空"
+        },
+        {
+          "field": "联系电话",
+          "operator": "matches_regex",
+          "value": "^1[3-9]\\d{9}$",
+          "error_message": "联系电话格式不正确"
+        }
+      ],
+      "actions": [
+        {
+          "type": "format_field",
+          "field": "销售日期",
+          "format": "yyyy-MM-dd"
+        },
+        {
+          "type": "strip_whitespace",
+          "field": "产品名称"
+        },
+        {
+          "type": "uppercase",
+          "field": "销售地区"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "performance_evaluation",
+      "name": "绩效评估规则",
+      "description": "评估销售团队的绩效表现",
+      "category": "evaluation",
+      "priority": 3,
+      "conditions": [
+        {
+          "field": "完成率",
+          "operator": "greater_than_or_equal",
+          "value": 100,
+          "aggregation": "monthly",
+          "group_by": "销售代表",
+          "error_message": "未达到绩效目标"
+        }
+      ],
+      "actions": [
+        {
+          "type": "tag_record",
+          "tag": "excellent_performance"
+        },
+        {
+          "type": "add_comment",
+          "comment": "恭喜！本月绩效达标率为{完成率}%"
+        }
+      ],
+      "else_actions": [
+        {
+          "type": "tag_record",
+          "tag": "needs_improvement"
+        },
+        {
+          "type": "add_comment",
+          "comment": "本月绩效达标率为{完成率}%，需继续努力"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "inventory_alert",
+      "name": "库存告警规则",
+      "description": "当库存低于安全库存时触发告警",
+      "category": "alerting",
+      "priority": 1,
+      "conditions": [
+        {
+          "field": "当前库存",
+          "operator": "less_than",
+          "value": "安全库存",
+          "error_message": "{产品名称}库存不足"
+        }
+      ],
+      "actions": [
+        {
+          "type": "send_email",
+          "profile_id": "work_email",
+          "recipients": ["inventory_manager@example.com"],
+          "subject": "【库存告警】{产品名称}库存不足",
+          "body": "警告：{产品名称}当前库存为{当前库存}件，低于安全库存{安全库存}件。请及时补货！"
+        },
+        {
+          "type": "create_todo",
+          "title": "为{产品名称}补货",
+          "assignee": "inventory_team",
+          "priority": "high"
+        }
+      ],
+      "active": true
+    }
+  ],
+  "rule_categories": [
+    "validation",
+    "calculation",
+    "filtering",
+    "alerting",
+    "segmentation",
+    "transformation",
+    "evaluation"
+  ],
+  "priority_levels": {
+    "1": "critical",
+    "2": "high",
+    "3": "medium",
+    "4": "low"
+  },
+  "default_settings": {
+    "enable_logging": true,
+    "log_level": "info",
+    "max_errors": 100,
+    "stop_on_error": false,
+    "enable_notifications": true
+  }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ report_name }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        .summary {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric-card {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 3px solid #3498db;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .metric-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        .chart-container {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .filter-info {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #27ae60;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 2px solid #ecf0f1;
+            padding-top: 20px;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .report-date {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-info">
+            <h1>{{ report_name }}</h1>
+            <div class="report-date">
+                <strong>生成时间:</strong> {{ generation_time }}
+            </div>
+        </div>
+        
+        {% if filters %}
+        <div class="filter-info">
+            <h3>应用的筛选条件</h3>
+            <ul>
+                {% for field, filter in filters.items() %}
+                <li><strong>{{ field }}:</strong> {{ filter.operator }} {{ filter.value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        {% if summary %}
+        <div class="summary">
+            <h3>报表摘要</h3>
+            <div class="metrics-grid">
+                {% for item in summary %}
+                {% if loop.index <= 4 %}
+                <div class="metric-card">
+                    <div class="metric-value">{{ item.值 }}</div>
+                    <div class="metric-label">{{ item.指标 }}</div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+            <table>
+                {% for item in summary %}
+                {% if loop.index > 4 %}
+                <tr>
+                    <td><strong>{{ item.指标 }}</strong></td>
+                    <td>{{ item.值 }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
+        
+        {% if charts %}
+        <h2>图表分析</h2>
+        {% for chart in charts %}
+        <div class="chart-container">
+            <h3>{{ chart.title }}</h3>
+            <p><strong>图表类型:</strong> {{ chart.type }}</p>
+            <p><strong>X轴:</strong> {{ chart.x_field }}</p>
+            <p><strong>Y轴:</strong> {{ chart.y_field }}</p>
+            <div style="height: 300px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">
+                [图表占位符: {{ chart.title }}]
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        
+        {% if data %}
+        <h2>数据详情</h2>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        {% for col in data.columns %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in data.iterrows() %}
+                    <tr>
+                        {% for col in data.columns %}
+                        <td>{{ row[col] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+        
+        <div class="footer">
+            <p>自动化报表工具生成 | 数据来源: {{ data_source }}</p>
+            <p>© {{ generation_time[:4] }} 报表系统</p>
+        </div>
+    </div>
+</body>
+</html>
