@@ -1,0 +1,337 @@
+{
+  "chart_configs": [
+    {
+      "id": "sales_bar_chart",
+      "name": "销售数据柱状图",
+      "description": "展示不同产品类别的销售数据",
+      "type": "bar",
+      "data_mapping": {
+        "x_axis": "产品类别",
+        "y_axis": "销售额",
+        "group_by": "销售地区",
+        "color_by": "销售地区"
+      },
+      "style": {
+        "width": 800,
+        "height": 400,
+        "margin": {
+          "top": 20,
+          "right": 30,
+          "bottom": 70,
+          "left": 70
+        },
+        "colors": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"],
+        "title": {
+          "text": "产品类别销售数据对比",
+          "font_size": 16,
+          "font_weight": "bold",
+          "color": "#333"
+        },
+        "grid": {
+          "show": true,
+          "color": "#e0e0e0",
+          "line_width": 1
+        },
+        "legend": {
+          "show": true,
+          "position": "top",
+          "font_size": 12
+        }
+      },
+      "x_axis": {
+        "title": "产品类别",
+        "font_size": 12,
+        "rotate_labels": 45,
+        "tick_interval": 1
+      },
+      "y_axis": {
+        "title": "销售额 (元)",
+        "font_size": 12,
+        "format": "{value:,.0f}",
+        "show_grid": true
+      },
+      "tooltip": {
+        "show": true,
+        "format": "{x}: {y:,.0f} 元",
+        "background_color": "rgba(0, 0, 0, 0.8)",
+        "text_color": "#fff"
+      },
+      "interactivity": {
+        "enable_zoom": true,
+        "enable_drag": true,
+        "enable_hover": true
+      },
+      "animation": {
+        "enabled": true,
+        "duration": 800,
+        "easing": "easeOutQuad"
+      },
+      "active": true
+    },
+    {
+      "id": "sales_line_chart",
+      "name": "销售趋势折线图",
+      "description": "展示销售数据随时间的变化趋势",
+      "type": "line",
+      "data_mapping": {
+        "x_axis": "日期",
+        "y_axis": "销售额",
+        "group_by": "产品类别",
+        "color_by": "产品类别"
+      },
+      "style": {
+        "width": 1000,
+        "height": 500,
+        "margin": {
+          "top": 20,
+          "right": 30,
+          "bottom": 70,
+          "left": 70
+        },
+        "colors": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728"],
+        "title": {
+          "text": "销售趋势分析 (2024年)",
+          "font_size": 18,
+          "font_weight": "bold",
+          "color": "#333"
+        },
+        "grid": {
+          "show": true,
+          "color": "#e0e0e0",
+          "line_width": 1
+        },
+        "legend": {
+          "show": true,
+          "position": "top",
+          "font_size": 12
+        }
+      },
+      "x_axis": {
+        "title": "日期",
+        "font_size": 12,
+        "rotate_labels": 45,
+        "tick_interval": 7
+      },
+      "y_axis": {
+        "title": "销售额 (元)",
+        "font_size": 12,
+        "format": "{value:,.0f}",
+        "show_grid": true
+      },
+      "tooltip": {
+        "show": true,
+        "format": "{x}: {y:,.0f} 元",
+        "background_color": "rgba(0, 0, 0, 0.8)",
+        "text_color": "#fff"
+      },
+      "interactivity": {
+        "enable_zoom": true,
+        "enable_drag": true,
+        "enable_hover": true
+      },
+      "animation": {
+        "enabled": true,
+        "duration": 1000,
+        "easing": "easeInOutQuad"
+      },
+      "active": true
+    },
+    {
+      "id": "market_share_pie_chart",
+      "name": "市场份额饼图",
+      "description": "展示不同品牌的市场份额分布",
+      "type": "pie",
+      "data_mapping": {
+        "labels": "品牌",
+        "values": "市场份额",
+        "color_by": "品牌"
+      },
+      "style": {
+        "width": 600,
+        "height": 400,
+        "margin": {
+          "top": 20,
+          "right": 20,
+          "bottom": 20,
+          "left": 20
+        },
+        "colors": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"],
+        "title": {
+          "text": "品牌市场份额分布",
+          "font_size": 16,
+          "font_weight": "bold",
+          "color": "#333"
+        },
+        "legend": {
+          "show": true,
+          "position": "right",
+          "font_size": 12
+        }
+      },
+      "pie_settings": {
+        "inner_radius": 0.3,
+        "outer_radius": 0.8,
+        "explode": [0.1, 0, 0, 0, 0, 0],
+        "start_angle": 90
+      },
+      "tooltip": {
+        "show": true,
+        "format": "{label}: {value:.1%}",
+        "background_color": "rgba(0, 0, 0, 0.8)",
+        "text_color": "#fff"
+      },
+      "interactivity": {
+        "enable_hover": true,
+        "enable_click": true
+      },
+      "animation": {
+        "enabled": true,
+        "duration": 800,
+        "easing": "easeOutBounce"
+      },
+      "active": true
+    },
+    {
+      "id": "customer_survey_radar_chart",
+      "name": "客户满意度雷达图",
+      "description": "展示客户对不同维度的满意度评价",
+      "type": "radar",
+      "data_mapping": {
+        "categories": ["产品质量", "价格合理性", "售后服务", "品牌形象", "购买便捷性"],
+        "values": ["满意度评分"],
+        "group_by": "用户群体",
+        "color_by": "用户群体"
+      },
+      "style": {
+        "width": 700,
+        "height": 500,
+        "margin": {
+          "top": 20,
+          "right": 30,
+          "bottom": 30,
+          "left": 30
+        },
+        "colors": ["#1f77b4", "#ff7f0e"],
+        "title": {
+          "text": "客户满意度分析",
+          "font_size": 16,
+          "font_weight": "bold",
+          "color": "#333"
+        },
+        "grid": {
+          "show": true,
+          "color": "#e0e0e0",
+          "line_width": 1
+        },
+        "legend": {
+          "show": true,
+          "position": "top",
+          "font_size": 12
+        }
+      },
+      "radar_settings": {
+        "max_value": 5,
+        "min_value": 0,
+        "step": 1,
+        "show_axes": true,
+        "show_labels": true
+      },
+      "tooltip": {
+        "show": true,
+        "format": "{category}: {value:.1f}分",
+        "background_color": "rgba(0, 0, 0, 0.8)",
+        "text_color": "#fff"
+      },
+      "interactivity": {
+        "enable_hover": true
+      },
+      "animation": {
+        "enabled": true,
+        "duration": 1000,
+        "easing": "easeInOutCubic"
+      },
+      "active": true
+    },
+    {
+      "id": "sales_scatter_chart",
+      "name": "销售与利润散点图",
+      "description": "展示销售额与利润之间的关系",
+      "type": "scatter",
+      "data_mapping": {
+        "x_axis": "销售额",
+        "y_axis": "利润",
+        "size": "销售数量",
+        "color_by": "产品类别"
+      },
+      "style": {
+        "width": 800,
+        "height": 500,
+        "margin": {
+          "top": 20,
+          "right": 30,
+          "bottom": 70,
+          "left": 70
+        },
+        "colors": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"],
+        "title": {
+          "text": "销售额与利润关系分析",
+          "font_size": 16,
+          "font_weight": "bold",
+          "color": "#333"
+        },
+        "grid": {
+          "show": true,
+          "color": "#e0e0e0",
+          "line_width": 1
+        },
+        "legend": {
+          "show": true,
+          "position": "top",
+          "font_size": 12
+        }
+      },
+      "x_axis": {
+        "title": "销售额 (元)",
+        "font_size": 12,
+        "format": "{value:,.0f}",
+        "show_grid": true
+      },
+      "y_axis": {
+        "title": "利润 (元)",
+        "font_size": 12,
+        "format": "{value:,.0f}",
+        "show_grid": true
+      },
+      "tooltip": {
+        "show": true,
+        "format": "销售额: {x:,.0f}元<br/>利润: {y:,.0f}元<br/>数量: {size}",
+        "background_color": "rgba(0, 0, 0, 0.8)",
+        "text_color": "#fff"
+      },
+      "interactivity": {
+        "enable_zoom": true,
+        "enable_drag": true,
+        "enable_hover": true
+      },
+      "animation": {
+        "enabled": true,
+        "duration": 800,
+        "easing": "easeOutQuad"
+      },
+      "active": true
+    }
+  ],
+  "default_chart_settings": {
+    "width": 800,
+    "height": 400,
+    "colors": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"],
+    "title_font_size": 16,
+    "axis_font_size": 12,
+    "legend_position": "top",
+    "show_grid": true,
+    "show_tooltip": true,
+    "enable_animation": true,
+    "animation_duration": 800
+  },
+  "supported_chart_types": ["bar", "line", "pie", "radar", "scatter", "area", "histogram", "box"]
+}

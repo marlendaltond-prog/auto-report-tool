@@ -1,0 +1,86 @@
+# AutoReport Pro 配置文件
+
+# 数据源配置
+data:
+  type: excel  # 支持: excel, csv, sql, api
+  path: "test_data.xlsx"
+  worksheet: "Sheet1"  # 仅Excel使用
+  encoding: utf-8  # 仅CSV使用
+  query: "SELECT * FROM users"  # 仅SQL使用
+  api_url: "https://api.example.com/data"  # 仅API使用
+  api_params: {}  # 仅API使用
+
+# 报表配置
+report:
+  name: "自动化报表"
+  title: "数据分析报告"
+  description: "基于数据源生成的自动化分析报告"
+  author: "AutoReport Pro"
+  date_format: "%Y-%m-%d"
+
+# 输出配置
+output:
+  dir: "reports"
+  formats: ["excel", "pdf", "html"]
+  excel:
+    template: ""
+    auto_fit: true
+    style: "default"
+  pdf:
+    template: ""
+    orientation: "portrait"  # portrait 或 landscape
+    margin: 2  # 英寸
+  html:
+    template: ""
+    css: ""
+
+# 图表配置
+charts:
+  enabled: true
+  types: ["bar", "line", "pie"]
+  width: 8
+  height: 6
+  dpi: 300
+
+# 计算配置
+calculations:
+  enabled: true
+  metrics: ["mean", "median", "sum", "count"]
+  group_by: []
+  filters: []
+
+# 定时任务配置
+schedule:
+  enabled: false
+  interval: "daily"  # daily, weekly, monthly
+  time: "09:00"
+  days: [1, 3, 5]  # 仅weekly使用
+
+# 邮件配置
+email:
+  enabled: false
+  to: []
+  cc: []
+  bcc: []
+  subject: "自动化报表 - {{report_name}}"
+  body: "这是一份自动生成的报表，请查收附件。"
+  attachments: []
+  smtp_server: "smtp.example.com"
+  smtp_port: 587
+  smtp_tls: true
+  username: ""
+  password: ""
+
+# 日志配置
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "report_generator.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# 高级配置
+advanced:
+  cache_enabled: true
+  cache_ttl: 3600  # 缓存时间，秒
+  max_rows: 100000  # 最大处理行数
+  chunk_size: 10000  # 分块处理大小
+  timeout: 300  # 超时时间，秒
