@@ -1,0 +1,109 @@
+{
+  "templates": [
+    {
+      "id": "simple_report",
+      "name": "简单报表",
+      "type": "html",
+      "template_file": "templates/simple.html",
+      "description": "简洁的报表模板，适合快速查看数据摘要",
+      "data_sources": ["sales_excel", "customer_csv"],
+      "output": {
+        "format": "html",
+        "dir": "reports/simple",
+        "filename_pattern": "{report_name}_{yyyyMMdd}.html"
+      },
+      "sections": [
+        "title",
+        "generated_time",
+        "summary",
+        "data_table"
+      ],
+      "active": true
+    },
+    {
+      "id": "detailed_report",
+      "name": "详细报表",
+      "type": "html",
+      "template_file": "templates/detailed.html",
+      "description": "包含详细数据和分析的报表模板",
+      "data_sources": ["sales_excel", "order_sql", "survey_data"],
+      "output": {
+        "format": "html",
+        "dir": "reports/detailed",
+        "filename_pattern": "{report_name}_{yyyyMMdd_HHmmss}.html"
+      },
+      "sections": [
+        "title",
+        "generated_time",
+        "summary",
+        "charts",
+        "data_details",
+        "data_table"
+      ],
+      "active": true
+    },
+    {
+      "id": "business_report",
+      "name": "商务报表",
+      "type": "html",
+      "template_file": "templates/business.html",
+      "description": "适合商务演示的专业报表模板",
+      "data_sources": ["sales_excel", "order_sql", "survey_data"],
+      "output": {
+        "format": "html",
+        "dir": "reports/business",
+        "filename_pattern": "{report_name}_{yyyyMMdd}_business.html"
+      },
+      "sections": [
+        "title",
+        "generated_time",
+        "summary",
+        "charts",
+        "data_analysis",
+        "data_table"
+      ],
+      "active": true
+    },
+    {
+      "id": "excel_sales_report",
+      "name": "Excel销售报表",
+      "type": "excel",
+      "template_file": "",
+      "description": "生成Excel格式的销售报表",
+      "data_sources": ["sales_excel"],
+      "output": {
+        "format": "excel",
+        "dir": "reports/excel",
+        "filename_pattern": "销售报表_{yyyyMM}.xlsx"
+      },
+      "settings": {
+        "auto_fit": true,
+        "style": "default",
+        "freeze_panes": "B2",
+        "charts": true
+      },
+      "active": true
+    },
+    {
+      "id": "pdf_analysis_report",
+      "name": "PDF分析报表",
+      "type": "pdf",
+      "template_file": "",
+      "description": "生成PDF格式的数据分析报表",
+      "data_sources": ["survey_data", "order_sql"],
+      "output": {
+        "format": "pdf",
+        "dir": "reports/pdf",
+        "filename_pattern": "数据分析报告_{yyyyMMdd}.pdf"
+      },
+      "settings": {
+        "orientation": "portrait",
+        "margin": 2,
+        "font_size": 12,
+        "charts": true
+      },
+      "active": true
+    }
+  ],
+  "default_template": "simple_report"
+}
